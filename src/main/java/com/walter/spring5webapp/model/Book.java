@@ -1,16 +1,22 @@
 package com.walter.spring5webapp.model;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     private String title;
     private String isbn;
     private String publisher;
+
+    @ManyToMany
     private Set<Author> authors = new HashSet<>();
+
 
     public Book() {
     }
@@ -69,6 +75,14 @@ public class Book {
                 Objects.equals(isbn, book.isbn) &&
                 Objects.equals(publisher, book.publisher) &&
                 Objects.equals(authors, book.authors);
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Override

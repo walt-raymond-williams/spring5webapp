@@ -1,14 +1,28 @@
 package com.walter.spring5webapp.model;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
 public class Author {
+
+    public long getId() {
+        return Id;
+    }
+
+    public void setId(long id) {
+        Id = id;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long Id;
     private String firstName;
     private String lastName;
+
+    @ManyToMany
     private Set<Book> books = new HashSet<>();
 
     public Author() {
