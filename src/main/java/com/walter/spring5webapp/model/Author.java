@@ -22,7 +22,7 @@ public class Author {
     private String firstName;
     private String lastName;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "authors")
     private Set<Book> books = new HashSet<>();
 
     public Author() {
@@ -66,7 +66,8 @@ public class Author {
     @Override
     public String toString() {
         return "Author{" +
-                "firstName='" + firstName + '\'' +
+                "Id=" + Id +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", books=" + books +
                 '}';
@@ -77,13 +78,11 @@ public class Author {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Author author = (Author) o;
-        return Objects.equals(firstName, author.firstName) &&
-                Objects.equals(lastName, author.lastName) &&
-                Objects.equals(books, author.books);
+        return Id == author.Id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, books);
+        return Objects.hash(Id);
     }
 }

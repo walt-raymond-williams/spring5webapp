@@ -15,6 +15,7 @@ public class Book {
     private String publisher;
 
     @ManyToMany
+    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name="book_id"),inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
 
 
@@ -66,16 +67,7 @@ public class Book {
         this.authors = authors;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
-        return Objects.equals(title, book.title) &&
-                Objects.equals(isbn, book.isbn) &&
-                Objects.equals(publisher, book.publisher) &&
-                Objects.equals(authors, book.authors);
-    }
+
 
     public long getId() {
         return id;
@@ -86,17 +78,26 @@ public class Book {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(title, isbn, publisher, authors);
-    }
-
-    @Override
     public String toString() {
         return "Book{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", publisher='" + publisher + '\'' +
                 ", authors=" + authors +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return id == book.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
