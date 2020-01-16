@@ -1,6 +1,5 @@
 package com.walter.spring5webapp.model;
 
-import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,10 +12,7 @@ public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
-
     String name;
-
-
     public Publisher() {
     }
 
