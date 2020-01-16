@@ -9,7 +9,7 @@ import java.util.Set;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     private String title;
     private String isbn;
     private String publisher;
@@ -28,7 +28,7 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public Book(String title, String isbn, String publisher, Set<Author> authors) {
+    public Book(String title) {
         this.title = title;
         this.isbn = isbn;
         this.publisher = publisher;
@@ -69,11 +69,11 @@ public class Book {
 
 
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

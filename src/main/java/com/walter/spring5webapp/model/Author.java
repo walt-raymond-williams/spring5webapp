@@ -8,17 +8,17 @@ import java.util.Set;
 @Entity
 public class Author {
 
-    public long getId() {
+    public Long getId() {
         return Id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         Id = id;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long Id;
+    private Long Id;
     private String firstName;
     private String lastName;
 
