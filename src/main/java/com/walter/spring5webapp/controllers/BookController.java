@@ -13,7 +13,7 @@ public class BookController {
 
     private BookRepository bookRepository;
 
-    @RequestMapping("/books")
+    @RequestMapping("/books") // http request to /books
     public String getBooks(Model model){
         model.addAttribute("books", bookRepository.findAll());
         return "books"; //view name in thymeleaf
